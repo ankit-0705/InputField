@@ -3,16 +3,14 @@ import InputField from "./InputField";
 import InputFieldContext from "../context/InputFieldContext";
 
 function InteractiveMode() {
-  const { variant, size } = useContext(InputFieldContext); 
+  const { variant, size } = useContext(InputFieldContext);
 
   const [value, setValue] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
-  const validateInput = () => {
-    return value.includes("@");
-  };
+  const validateInput = () => value.includes("@");
 
   const handleSubmit = async () => {
     if (!validateInput()) {
@@ -31,7 +29,6 @@ function InteractiveMode() {
     alert("Submitted successfully!");
   };
 
-  // Map input size to button size
   const buttonSizeClass = {
     sm: "px-3 py-1 text-sm",
     md: "px-5 py-2 text-base",
@@ -40,11 +37,16 @@ function InteractiveMode() {
 
   return (
     <div className="max-w-2xl mx-auto mt-8 px-4">
-      <div className="flex flex-col sm:flex-row gap-4 items-end">
-        {/* Input Field */}
+      {/* Shared label */}
+      <label className="block mb-2 text-base font-medium text-base-content">
+        Email
+      </label>
+
+      {/* Input and Button side by side */}
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-stretch">
+        {/* InputField without internal label */}
         <div className="flex-1">
           <InputField
-            label="Email"
             placeholder="Enter your email"
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -55,15 +57,16 @@ function InteractiveMode() {
             disabled={disabled}
             variant={variant}
             size={size}
+            label={null} // ensures internal label is removed
           />
         </div>
 
-        {/* Submit Button beside input */}
-        <div className="mb-1 sm:mb-6">
+        {/* Submit Button */}
+        <div className="w-full sm:w-auto h-full">
           <button
             onClick={handleSubmit}
             disabled={loading || disabled}
-            className={`rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 ${buttonSizeClass}`}
+            className={`w-full sm:w-auto h-full rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 ${buttonSizeClass}`}
           >
             {loading ? "Submitting..." : "Submit"}
           </button>

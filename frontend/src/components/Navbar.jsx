@@ -2,7 +2,7 @@ import { useContext } from "react";
 import InputFieldContext from "../context/InputFieldContext";
 
 function Navbar() {
-  const {theme, setTheme} = useContext(InputFieldContext);
+  const { theme, setTheme } = useContext(InputFieldContext);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -10,9 +10,11 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar bg-base-200 shadow-md border-b border-base-300 px-4">
+    <div className="navbar bg-base-200 shadow-md border-b border-base-300 px-4 sm:px-6 lg:px-8">
       <div className="flex-1">
-        <span className="text-xl font-bold text-primary">InputField Demo</span>
+        <span className="text-lg sm:text-xl font-bold text-primary">
+          InputField Demo
+        </span>
       </div>
 
       <div className="flex-none">

@@ -3,34 +3,29 @@ import { Button } from "./ui/stateful-button";
 import InputFieldContext from "../context/InputFieldContext";
 
 function DropDown() {
-  const {
-    setVariant,
-    setSize,
-    setMode,
-  } = useContext(InputFieldContext);
+  const { setVariant, setSize, setMode } = useContext(InputFieldContext);
 
   const [localVariant, setLocalVariant] = useState("outlined");
   const [localSize, setLocalSize] = useState("md");
   const [localMode, setLocalMode] = useState("preview");
 
   const handleExecute = async () => {
-
-    await new Promise((resolve) => setTimeout(resolve,1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setVariant(localVariant);
     setSize(localSize);
     setMode(localMode);
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-base-100 rounded-box shadow-xl mt-4">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 bg-base-100 rounded-box shadow-xl mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
         {/* Variant */}
         <div className="form-control">
           <label className="label">
             <span className="label-text">Variant</span>
           </label>
           <select
-            className="select select-bordered"
+            className="select select-bordered w-full"
             value={localVariant}
             onChange={(e) => setLocalVariant(e.target.value)}
           >
@@ -46,7 +41,7 @@ function DropDown() {
             <span className="label-text">Size</span>
           </label>
           <select
-            className="select select-bordered"
+            className="select select-bordered w-full"
             value={localSize}
             onChange={(e) => setLocalSize(e.target.value)}
           >
@@ -62,7 +57,7 @@ function DropDown() {
             <span className="label-text">Mode</span>
           </label>
           <select
-            className="select select-bordered"
+            className="select select-bordered w-full"
             value={localMode}
             onChange={(e) => setLocalMode(e.target.value)}
           >
