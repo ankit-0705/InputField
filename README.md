@@ -35,18 +35,6 @@ Usage
 - In Interactive Mode, enter an email and submit — invalid emails (without "@") show error.
 - Switch between light and dark themes using the toggle button in the navbar.
 
-src/
-├── components/
-│   ├── InputField.jsx         # InputField component with dynamic styling
-│   ├── PreviewMode.jsx        # Displays disabled, invalid, and loading input examples
-│   ├── InteractiveMode.jsx    # Input with submit button and validation
-│   ├── Navbar.jsx             # Theme toggle navbar
-│   └── ...                   
-├── context/
-│   └── InputFieldContext.js   # React context for variant, size, theme
-├── App.jsx                   # Main app entry
-└── index.js                  # ReactDOM render
-
 Customization
 
 - Modify Tailwind config to adjust colors and theme options.
